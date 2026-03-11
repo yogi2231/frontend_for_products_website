@@ -318,9 +318,12 @@ export default function Home() {
               <p className="mt-3 max-w-lg text-sm text-slate-700 sm:text-base">
                 Bright flavors, premium quality, and handpicked batches from trusted farms. Perfect for juices, desserts, and healthy snacking.
               </p>
+              <Link href="/shop">
               <button className="mt-6 rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800">
                 Buy Collection
               </button>
+              </Link>
+            
             </article>
 
             <article className="rounded-3xl border border-[#c9d8bd] bg-gradient-to-br from-[#edf7e7] to-[#d3ebc5] p-7 shadow-[0_14px_38px_-24px_rgba(15,23,42,0.45)]">
