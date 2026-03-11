@@ -36,7 +36,7 @@ export const authService = {
 
             const data = await response.json();
             return {
-                message:'user registered successfully',
+                message: 'user registered successfully',
                 success: true,
                 user: data.user,
                 token: data.token,
@@ -60,10 +60,14 @@ export const authService = {
             });
 
             const data = await response.json();
-            if (data.token) {
-                localStorage.setItem("authToken", data.token);
-                localStorage.setItem("user", JSON.stringify(data.user));
+            if (!data.token) {
+                return {
+                    success: false,
+                    message: "Invalid credentials",
+                };
             }
+            localStorage.setItem("authToken", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
             return {
                 success: true,
                 message: "Login successful",

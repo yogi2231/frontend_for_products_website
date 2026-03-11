@@ -207,7 +207,7 @@ export default function Auth() {
                 <select name="user_type" value={registerData.user_type} onChange={handleRegisterChange} className="w-full border rounded-lg px-3 py-2" disabled={loading}>
                   <option value="customer">Customer</option>
                   <option value="store">Store</option>
-                  <option value="admin">Admin</option>
+                  
                 </select>
               </div>
 

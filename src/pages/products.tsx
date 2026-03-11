@@ -264,7 +264,7 @@ const token = authService.getToken();
 
       const matchesCategory =
         activeCategory === "all" ||
-        item.category.toLowerCase() === activeCategory.toLowerCase();
+        item.product.toLowerCase() === activeCategory.toLowerCase();
 
       return matchesSearch && matchesCategory;
     });
@@ -311,7 +311,7 @@ const token = authService.getToken();
             <Sidebar onLogout={handleLogout} />
           </div>
 
-          <main className="flex-1 overflow-y-auto p-4 md:p-8 lg:p-10">
+          <main className="flex-1 overflow-y-auto max-h-screen p-4 md:p-8 lg:p-10">
             <section className="reveal mb-6 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-teal-950/60 p-6 shadow-[0_24px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm md:p-8">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                 <div>
