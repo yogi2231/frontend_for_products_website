@@ -168,24 +168,7 @@ export default function Home() {
                   Discover handpicked fruits and vegetables from trusted growers. Fast delivery, simple filtering, and better choices every week.
                 </p>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <div className="relative w-full sm:max-w-md">
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search fruits, vegetables, descriptions..."
-                      className="w-full rounded-full border border-[#d8ccb0] bg-white/90 px-5 py-3 pr-12 text-sm text-slate-800 shadow-sm outline-none transition focus:border-[#345a2a]/50"
-                    />
-                    <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-500">⌕</span>
-                  </div>
-                  <Link
-                    href="/shop"
-                    className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
-                  >
-                    Shop All
-                  </Link>
-                </div>
+                
 
                 <div className="mt-6 flex flex-wrap gap-2 text-xs sm:text-sm">
                   <span className="rounded-full border border-[#b8c9a6] bg-[#e7f0dc] px-3 py-1.5 font-semibold text-[#345a2a]">
