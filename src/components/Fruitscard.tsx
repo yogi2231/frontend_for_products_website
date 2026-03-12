@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { API_BASE_URL } from '@/services/backend';
 
 type Props = {
     name: string;
@@ -42,7 +43,7 @@ const Fruitscard = (props: Props) => {
       };
 
   const syncQuantityFromServer = async (token: string) => {
-    const response = await fetch('https://django-restframework-products-backend.onrender.com/api/cart/', {
+    const response = await fetch(`${API_BASE_URL}/cart/`, {
       headers: {
         "Authorization": `Token ${token}`,
         "Content-Type": "application/json",
@@ -59,7 +60,7 @@ const Fruitscard = (props: Props) => {
   };
 
   const syncWishlistFromServer = async (token: string) => {
-    const response = await fetch('https://django-restframework-products-backend.onrender.com/api/wishlist/', {
+    const response = await fetch(`${API_BASE_URL}/wishlist/`, {
       method: 'GET',
       headers: {
         "Authorization": `Token ${token}`,
@@ -121,7 +122,7 @@ const Fruitscard = (props: Props) => {
     setIsUpdating(true);
 
     try {
-      const response = await fetch('https://django-restframework-products-backend.onrender.com/api/cart/add/', {
+      const response = await fetch(`${API_BASE_URL}/cart/add/`, {
         method: 'POST',
         headers: {
           "Authorization": `Token ${token}`,
@@ -172,7 +173,7 @@ const Fruitscard = (props: Props) => {
     setIsWishlistUpdating(true);
 
     try {
-      const response = await fetch(`${isWishlisted ? 'https://django-restframework-products-backend.onrender.com/api/wishlist/remove/' : 'https://django-restframework-products-backend.onrender.com/api/wishlist/add/'}`, {
+      const response = await fetch(`${isWishlisted ? `${API_BASE_URL}/wishlist/remove/` : `${API_BASE_URL}/wishlist/add/`}`, {
         method: 'POST',
         headers: {
           "Authorization": `Token ${token}`,

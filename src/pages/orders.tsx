@@ -4,10 +4,11 @@ import { Sora } from "next/font/google";
 
 import Header from "@/components/Header";
 import { authService } from "@/services/authService";
+import { API_BASE_URL } from "@/services/backend";
 
 const sora = Sora({ subsets: ["latin"] });
 
-const ORDERS_API_URL = "https://django-restframework-products-backend.onrender.com/api/orders/";
+const ORDERS_API_URL = `${API_BASE_URL}/orders/`;
 
 type OrderProduct = {
     id: number;

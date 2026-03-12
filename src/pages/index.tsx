@@ -5,6 +5,7 @@ import { Syne, Nunito_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import { authService } from "@/services/authService";
 import Fruitscard from "@/components/Fruitscard";
+import { API_BASE_URL } from "@/services/backend";
 
 const syne = Syne({ subsets: ["latin"] });
 const nunito = Nunito_Sans({ subsets: ["latin"] });
@@ -55,7 +56,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://django-restframework-products-backend.onrender.com/api/products");
+        const response = await fetch(`${API_BASE_URL}/products`);
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -159,23 +160,23 @@ export default function Home() {
           <section className="rounded-[2rem] border border-[#cfc3a7] bg-gradient-to-br from-[#f8ead0] via-[#f8f3e4] to-[#e4efdb] p-6 shadow-[0_20px_64px_-32px_rgba(15,23,42,0.45)] sm:p-8 lg:p-10">
             <div className="grid gap-6 lg:grid-cols-2 lg:items-center">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-700">Seasonal Organic Store</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-700">Premium Tech Store</p>
                 <h1 className={`mt-3 text-4xl leading-tight sm:text-5xl ${syne.className}`}>
-                  Fresh Produce
-                  <span className="block text-[#345a2a]">With Market-Grade Quality</span>
+                  Electronics & Gadgets
+                  <span className="block text-[#345a2a]">Premium Quality Technology</span>
                 </h1>
                 <p className="mt-4 max-w-xl text-sm text-slate-700 sm:text-base">
-                  Discover handpicked fruits and vegetables from trusted growers. Fast delivery, simple filtering, and better choices every week.
+                  Discover curated electronics and gadgets from trusted brands. Express delivery, smart filtering, and the latest tech every week.
                 </p>
 
                 
 
                 <div className="mt-6 flex flex-wrap gap-2 text-xs sm:text-sm">
                   <span className="rounded-full border border-[#b8c9a6] bg-[#e7f0dc] px-3 py-1.5 font-semibold text-[#345a2a]">
-                    {products.length} products available
+                    {products.length} gadgets & devices
                   </span>
                   <span className="rounded-full border border-[#d6c9a9] bg-[#fff5dc] px-3 py-1.5 font-semibold text-slate-700">
-                    Fresh arrivals daily
+                    New releases weekly
                   </span>
                 </div>
               </div>
@@ -205,9 +206,9 @@ export default function Home() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Explore</p>
-                <h2 className={`mt-1 text-3xl text-slate-900 ${syne.className}`}>Our Organic Products</h2>
+                <h2 className={`mt-1 text-3xl text-slate-900 ${syne.className}`}>Our Tech Collection</h2>
                 <p className="mt-1 text-sm text-slate-600">
-                  Curated picks that match your budget, sorted your way.
+                  Premium gadgets that match your budget, sorted your way.
                 </p>
               </div>
 
@@ -314,9 +315,9 @@ export default function Home() {
           <section className="mt-10 grid gap-6 lg:grid-cols-2">
             <article className="rounded-3xl border border-[#d5ccb5] bg-gradient-to-br from-[#fbe9bf] to-[#f4cf7f] p-7 shadow-[0_14px_38px_-24px_rgba(15,23,42,0.45)]">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-700">Weekly Spotlight</p>
-              <h3 className={`mt-2 text-3xl text-slate-900 ${syne.className}`}>Fresh Exotic Fruits</h3>
+              <h3 className={`mt-2 text-3xl text-slate-900 ${syne.className}`}>Latest Tech Gadgets</h3>
               <p className="mt-3 max-w-lg text-sm text-slate-700 sm:text-base">
-                Bright flavors, premium quality, and handpicked batches from trusted farms. Perfect for juices, desserts, and healthy snacking.
+                Cutting-edge innovation, premium quality, and verified devices from trusted brands. Perfect for work, gaming, and entertainment.
               </p>
               <Link href="/shop">
               <button className="mt-6 rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800">
@@ -328,13 +329,13 @@ export default function Home() {
 
             <article className="rounded-3xl border border-[#c9d8bd] bg-gradient-to-br from-[#edf7e7] to-[#d3ebc5] p-7 shadow-[0_14px_38px_-24px_rgba(15,23,42,0.45)]">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-700">Trusted Metrics</p>
-              <h3 className={`mt-2 text-3xl text-slate-900 ${syne.className}`}>Built Around Freshness</h3>
+              <h3 className={`mt-2 text-3xl text-slate-900 ${syne.className}`}>Built Around Innovation</h3>
               <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
                 {[
-                  { label: "Satisfied Customers", value: "1963+" },
-                  { label: "Quality Service", value: "99%" },
-                  { label: "Quality Certificates", value: "33" },
-                  { label: "Products Available", value: "789" },
+                  { label: "Satisfied Customers", value: "4200+" },
+                  { label: "Quality Assurance", value: "99%" },
+                  { label: "Verified Brands", value: "45" },
+                  { label: "Tech Products", value: "850" },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-xl border border-white/70 bg-white/70 p-3">
                     <p className="text-lg font-bold text-slate-900">{stat.value}</p>

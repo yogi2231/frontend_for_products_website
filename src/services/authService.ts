@@ -1,4 +1,6 @@
-const API_BASE_URL = "https://django-restframework-products-backend.onrender.com/api/auth";
+import { API_BASE_URL } from "./backend";       
+const API_BASE = `${API_BASE_URL}/auth`;
+
 
 export interface RegisterPayload {
     username: string;
@@ -26,7 +28,7 @@ export interface AuthResponse {
 export const authService = {
     async register(payload: RegisterPayload): Promise<AuthResponse> {
         try {
-            const response = await fetch(`${API_BASE_URL}/register/`, {
+            const response = await fetch(`${API_BASE}/register/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -51,7 +53,7 @@ export const authService = {
 
     async login(payload: LoginPayload): Promise<AuthResponse> {
         try {
-            const response = await fetch(`${API_BASE_URL}/login/`, {
+            const response = await fetch(`${API_BASE}/login/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

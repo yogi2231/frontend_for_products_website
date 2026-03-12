@@ -4,6 +4,7 @@ import { Sora } from "next/font/google";
 
 import Header from "@/components/Header";
 import { authService } from "@/services/authService";
+import { API_BASE_URL } from "@/services/backend";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -45,7 +46,7 @@ export default function WishlistPage() {
       return;
     }
 
-    const response = await fetch("https://django-restframework-products-backend.onrender.com/api/wishlist/", {
+    const response = await fetch(`${API_BASE_URL}/wishlist/`, {
       method: "GET",
       headers: {
         Authorization: `Token ${token}`,

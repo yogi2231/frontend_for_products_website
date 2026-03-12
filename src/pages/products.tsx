@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { authService } from "@/services/authService";
 import Sidebar from "@/components/Sidebar";
+import { API_BASE_URL } from "@/services/backend";
 
 interface Product {
   id: number;
@@ -31,7 +32,7 @@ interface User {
   user_type: string;
 }
 
-const API_BASE_URL = "https://django-restframework-products-backend.onrender.com/api/products";
+const API_BASE = `${API_BASE_URL}/products`;
 
 const initialFormData: ProductFormData = {
   product: "",
@@ -86,7 +87,7 @@ export default function Products() {
         return;
       }
 
-      const response = await fetch(API_BASE_URL, { headers });
+      const response = await fetch(API_BASE, { headers });
       if (!response.ok) {
         throw new Error(`Failed to load products (${response.status})`);
       }
@@ -157,8 +158,8 @@ export default function Products() {
     try {
       const endpoint =
         formMode === "edit" && selectedProductId !== null
-          ? `${API_BASE_URL}/${selectedProductId}`
-          : API_BASE_URL;
+          ? `${API_BASE}/${selectedProductId}`
+          : API_BASE;
       const method = formMode === "edit" ? "PUT" : "POST";
      
 const token = authService.getToken();
@@ -217,7 +218,7 @@ const token = authService.getToken();
       }
       
 
-      const response = await fetch(`${API_BASE_URL}/${product.id}`, {
+      const response = await fetch(`${API_BASE}/${product.id}`, {
         method: "DELETE",
         headers: {
       Authorization: `Token ${token}`,

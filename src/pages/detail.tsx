@@ -5,6 +5,7 @@ import { Sora } from "next/font/google";
 
 import Header from "@/components/Header";
 import { authService } from "@/services/authService";
+import { API_BASE_URL } from "@/services/backend";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -71,7 +72,7 @@ export default function DetailPage() {
         headers.Authorization = `Token ${token}`;
       }
 
-      const response = await fetch(`https://django-restframework-products-backend.onrender.com/api/products/${productId}`, {
+      const response = await fetch(`${API_BASE_URL}/products/${productId}`, {
         method: "GET",
         headers,
       });
@@ -91,7 +92,7 @@ export default function DetailPage() {
         return;
       }
 
-      const response = await fetch("https://django-restframework-products-backend.onrender.com/api/cart/", {
+      const response = await fetch(`${API_BASE_URL}/cart/`, {
         headers: {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",
@@ -138,7 +139,7 @@ export default function DetailPage() {
     setIsCartUpdating(true);
 
     try {
-      const response = await fetch("https://django-restframework-products-backend.onrender.com/api/cart/add/", {
+      const response = await fetch(`${API_BASE_URL}/cart/add/`, {
         method: "POST",
         headers: {
           Authorization: `Token ${token}`,
@@ -154,7 +155,7 @@ export default function DetailPage() {
         throw new Error("Failed to update cart item quantity");
       }
 
-      const cartResponse = await fetch("https://django-restframework-products-backend.onrender.com/api/cart/", {
+      const cartResponse = await fetch(`${API_BASE_URL}/cart/`, {
         headers: {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",

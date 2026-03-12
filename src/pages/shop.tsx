@@ -4,6 +4,7 @@ import { Syne, Nunito_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import { authService } from "@/services/authService";
 import Fruitscard from "@/components/Fruitscard";
+import { API_BASE_URL } from "@/services/backend";
 
 const syne = Syne({ subsets: ["latin"] });
 const nunito = Nunito_Sans({ subsets: ["latin"] });
@@ -46,7 +47,7 @@ export default function Shop() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://django-restframework-products-backend.onrender.com/api/products");
+        const response = await fetch(`${API_BASE_URL}/products`);
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -109,7 +110,7 @@ export default function Shop() {
       <div className="flex min-h-screen items-center justify-center bg-[#f4f1e7] px-6">
         <div className="w-full max-w-md rounded-3xl border border-[#d9d0b6] bg-white/90 p-8 text-center shadow-[0_18px_50px_-28px_rgba(15,23,42,0.5)] backdrop-blur">
           <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-[#cfc4a4] border-t-[#4b6b3f]" />
-          <p className={`mt-5 text-xl font-semibold text-slate-800 ${syne.className}`}>Preparing your shop...</p>
+          <p className={`mt-5 text-xl font-semibold text-slate-800 ${syne.className}`}>Loading tech collection...</p>
         </div>
       </div>
     );
@@ -157,13 +158,13 @@ export default function Shop() {
 
         <main className="relative mx-auto max-w-7xl px-4 pb-16 pt-7 sm:px-6 lg:px-8">
           <section className="rounded-[2rem] border border-[#cfc3a7] bg-gradient-to-br from-[#f8ead0] via-[#f8f3e4] to-[#e4efdb] p-6 shadow-[0_20px_64px_-32px_rgba(15,23,42,0.45)] sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-700">Shop Collection</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-700">Full Tech Store</p>
             <h1 className={`mt-3 text-4xl leading-tight sm:text-5xl ${syne.className}`}>
-              Fresh Products
-              <span className="block text-[#345a2a]">Picked For Every Kitchen</span>
+              Electronics & Gadgets
+              <span className="block text-[#345a2a]">Cutting-Edge Technology</span>
             </h1>
             <p className="mt-4 max-w-2xl text-sm text-slate-700 sm:text-base">
-              Use search, category, and price controls to find what you need quickly.
+              Browse by category, filter by price, and sort to find your perfect tech gadget.
             </p>
           </section> 
 
@@ -282,7 +283,7 @@ export default function Shop() {
                 <p className="text-sm font-medium text-slate-700">
                   Showing <span className="font-bold text-slate-900">{filteredProducts.length}</span> products
                 </p>
-                <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Fresh and Organic</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Premium & Verified</p>
               </div>
 
               {filteredProducts.length > 0 ? (
@@ -295,7 +296,7 @@ export default function Shop() {
                         price={String(product.price)}
                         image={product.product_images?.[0]?.image || "https://via.placeholder.com/200x200"}
                         category={product.category || product.product}
-                        description={product.product_description || "Fresh and high quality produce."}
+                        description={product.product_description || "Premium quality electronics and gadgets."}
                       />
                     </div>
                   ))}
@@ -303,7 +304,7 @@ export default function Shop() {
               ) : (
                 <div className="rounded-2xl border border-dashed border-[#c8bfaa] bg-[#faf7ef] p-10 text-center">
                   <h3 className={`text-2xl text-slate-900 ${syne.className}`}>No products found</h3>
-                  <p className="mt-2 text-sm text-slate-600">Try a different search or widen your price range.</p>
+                    <p className="mt-2 text-sm text-slate-600">Try a different search, category, or price range to find your tech.</p>
                 </div>
               )}
             </section>

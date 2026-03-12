@@ -4,6 +4,7 @@ import { Sora } from "next/font/google";
 
 import Header from "@/components/Header";
 import { authService } from "@/services/authService";
+import { API_BASE_URL } from "@/services/backend";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -75,7 +76,7 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://django-restframework-products-backend.onrender.com/api/contacts/", {
+      const response = await fetch(`${API_BASE_URL}/contacts`, {
         method: "POST",
         headers: {
           Authorization: `Token ${token}`,

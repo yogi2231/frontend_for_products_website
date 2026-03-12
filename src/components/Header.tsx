@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { authService } from "@/services/authService";
+import { API_BASE_URL } from "@/services/backend";
 
 type CartResponse = {
   items?: {
@@ -23,7 +24,7 @@ export default function Header() {
     }
 
     try {
-      const response = await fetch("https://django-restframework-products-backend.onrender.com/api/cart/", {
+      const response = await fetch(`${API_BASE_URL}/cart/`, {
         headers: {
           Authorization: `Token ${token}`,
           "Content-Type": "application/json",
@@ -81,7 +82,7 @@ export default function Header() {
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           {/* Logo */}
           <Link href="/">
-            <h1 className="text-4xl font-extrabold text-gray-900 cursor-pointer">Fruitables</h1>
+            <h1 className="text-4xl font-extrabold text-gray-900 cursor-pointer">TechHub</h1>
           </Link>
 
           {/* Navigation */}
@@ -146,6 +147,9 @@ export default function Header() {
                       </Link>
                       <Link href="/orders" className="block px-4 py-2 text-gray-600 hover:bg-lime-50 hover:text-lime-500">
                         My Orders
+                      </Link>
+                      <Link href="/address" className="block px-4 py-2 text-gray-600 hover:bg-lime-50 hover:text-lime-500">
+                        Address
                       </Link>
                       <button
                         onClick={handleLogout}

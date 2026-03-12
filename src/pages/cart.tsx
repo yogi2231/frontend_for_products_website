@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Sora } from "next/font/google";
 import Header from "@/components/Header";
 import { authService } from "@/services/authService";
+import { API_BASE_URL } from "@/services/backend";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -44,7 +45,7 @@ export default function CartPage() {
       return;
     }
 
-    const response = await fetch("https://django-restframework-products-backend.onrender.com/api/cart/", {
+    const response = await fetch(`${API_BASE_URL}/cart/`, {
       headers: {
         Authorization: `Token ${token}`,
         "Content-Type": "application/json",
